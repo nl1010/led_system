@@ -2,6 +2,7 @@
 
 
 int led1 = 2;
+int led2 = 3;
 unsigned int i = 0;
 boolean rise = true;
 int breath_period = 1000;
@@ -14,15 +15,14 @@ void setup()
 }
 
 
-
 void loop()
 {
-  breath_led(led1, breath_period);
+  breath_led(led1, led2, breath_period);
 }
 
 
 //breath the led through certain digital pin 
-void breath_led(int led_pin, int period){
+void breath_led(int led_pin1, int led_pin2,  int period){
   if (i == breath_period)
   {
     i = 1;
@@ -30,17 +30,21 @@ void breath_led(int led_pin, int period){
   }
   if (rise == false)
   {
-    digitalWrite(led_pin, LOW);
+    digitalWrite(led_pin1, LOW);
+    digitalWrite(led_pin2, LOW);
     delayMicroseconds(i);
-    digitalWrite(led_pin, HIGH);
+    digitalWrite(led_pin1, HIGH);
+    digitalWrite(led_pin2, HIGH);
     delayMicroseconds(breath_period - i);
     i = i + 1;
   }
   if (rise == true)
   {
-    digitalWrite(13, LOW);
+    digitalWrite(led_pin1, LOW);
+    digitalWrite(led_pin2, LOW);
     delayMicroseconds(breath_period - i);
-    digitalWrite(13, HIGH);
+    digitalWrite(led_pin1, HIGH);
+    digitalWrite(led_pin2, HIGH);
     delayMicroseconds(i);
     i = i + 1;
   }  
