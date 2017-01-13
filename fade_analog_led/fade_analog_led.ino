@@ -20,7 +20,7 @@
 const int ledPin = A1;    // LED connected to digital pin 9
 void setup() {
   // nothing happens in setup
-  pinMode(ledPin, OUTPUT);
+  pinMode(ledPin, INPUT);
 }
 
 void loop() {
