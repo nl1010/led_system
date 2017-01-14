@@ -6,6 +6,9 @@
 enum { s0 = 2, s1 = 3, s2 = 4, s3 = 5};
 int SIG_pin = 9; 
 
+
+int channels[] = {1,2,3,4,5};
+
 void setup() {
   pinMode(s0, OUTPUT); 
   pinMode(s1, OUTPUT); 
@@ -19,20 +22,25 @@ void setup() {
 
   analogWrite(SIG_pin, 255);
   Serial.begin(9600);
+  Serial.println(sizeof(channels));
 }
 
 void loop() {
-  for(int i = 0; i < 16; i ++){
-    Serial.print("Value at channel ");
-    Serial.print(i);
-    Serial.print("is : ");
-    readMux(i);
-//    Serial.println(readMux(i));
-//    delay(1);
+  read_mul_mux(channels);
+//  Serial.println(sizeof(channels));
+}
+
+
+void read_mul_mux (int channels[]) {
+  Serial.println(sizeof(channels));
+
+  for (int i = 0; i<(sizeof(channels)/sizeof(int)); i++) {
+    read_mux(channels[i]);
   }
 }
 
-int readMux(int channel){
+
+void read_mux(int channel){
   int controlPin[] = {s0, s1, s2, s3};
 
   int muxChannel[16][4]={
@@ -58,6 +66,8 @@ int readMux(int channel){
   for(int i = 0; i < 4; i ++){
     digitalWrite(controlPin[i], muxChannel[channel][i]);
   }
+
+
 
   //read the value at the SIG pin
 //  int val = analogRead(SIG_pin);
