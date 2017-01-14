@@ -48,7 +48,7 @@ void loop() {
 
 void fade_pwm_led(int x, int y) {
   digitalWrite(x, LOW); //enable sector
-  digitalWrite(4, HIGH); //disable other sectors
+//  digitalWrite(4, HIGH); //disable other sectors
 //  matrix_aux_enable_sectors();
 //  digitalWrite(4, HIGH); //shut down the LED ** need test the damage *** 
   for (int fadeValue = min_fade_intensity ; fadeValue <= max_fade_intensity; fadeValue += fade_intensity_decrement_step) {
