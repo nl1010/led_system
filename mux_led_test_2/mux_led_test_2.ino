@@ -43,15 +43,10 @@ void setup() {
   pinMode(s1, OUTPUT);
   pinMode(s2, OUTPUT);
   pinMode(s3, OUTPUT);
-
   digitalWrite(s0, LOW);
-
   digitalWrite(s1, LOW);
-
   digitalWrite(s2, LOW);
-
   digitalWrite(s3, LOW);
-
 
 
   //  analogWrite(SIG_pin, 100);
